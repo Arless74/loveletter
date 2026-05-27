@@ -290,3 +290,21 @@ body{
         font-size:90px;
     }
 }
+
+/* =========================
+   FINAL CENTRADO
+========================= */
+.contenido-final{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    z-index:2;
+    padding:20px;
+}
+
+.final h1{
+    text-align:center;
+    line-height:1.2;
+}

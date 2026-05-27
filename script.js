@@ -26,24 +26,96 @@ let contador = 0;
 let tamaño = 1;
 
 /* =========================
-   ABRIR SOBRE
+   ANIMACIÓN SOBRE (GSAP)
 ========================= */
 sobre.addEventListener("click", () => {
-    sobre.classList.add("abierto");
 
-    setTimeout(() => {
-        sobre.style.display = "none";
-        carta.classList.remove("oculto");
+    sobre.style.pointerEvents = "none";
 
-    }, 900);
+    /* abrir tapa */
+    gsap.to(".tapa", {
+        rotateX: 180,
+        duration: 1.2,
+        ease: "power2.inOut",
+        transformOrigin: "top"
+    });
+
+    /* pequeño rebote */
+    gsap.to(".sobre", {
+        y: -15,
+        duration: 0.5,
+        repeat: 1,
+        yoyo: true,
+        ease: "power1.inOut"
+    });
+
+    /* desaparecer sobre */
+    gsap.to(".sobre", {
+        delay: 1,
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.8,
+        ease: "power2.out",
+        onComplete: () => {
+
+            sobre.style.display = "none";
+
+            carta.classList.remove("oculto");
+
+            /* aparecer carta */
+            gsap.fromTo(
+                ".carta",
+                {
+                    opacity: 0,
+                    y: 80,
+                    scale: 0.7,
+                    rotate: -5
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    rotate: 0,
+                    duration: 1.2,
+                    ease: "elastic.out(1, 0.5)"
+                }
+            );
+        }
+    });
 });
 
 /* =========================
-   ABRIR CARTA
+   ABRIR PREGUNTA
 ========================= */
 abrirPregunta.addEventListener("click", () => {
-    carta.classList.add("oculto");
-    pregunta.classList.remove("oculto");
+
+    gsap.to(".carta", {
+        opacity: 0,
+        y: -50,
+        scale: 0.8,
+        duration: 0.5,
+        ease: "power2.in",
+        onComplete: () => {
+
+            carta.classList.add("oculto");
+
+            pregunta.classList.remove("oculto");
+
+            gsap.fromTo(
+                ".pregunta",
+                {
+                    opacity: 0,
+                    scale: 0.7
+                },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 1,
+                    ease: "back.out(1.7)"
+                }
+            );
+        }
+    });
 });
 
 /* =========================
@@ -55,20 +127,31 @@ botonNo.addEventListener("click", moverNo);
 function moverNo(){
 
     const contenedor = document.querySelector(".botones");
+
     const rect = contenedor.getBoundingClientRect();
 
     const x = Math.random() * (rect.width - botonNo.offsetWidth);
+
     const y = Math.random() * (rect.height - botonNo.offsetHeight);
 
-    botonNo.style.left = x + "px";
-    botonNo.style.top = y + "px";
+    gsap.to(botonNo, {
+        left: x,
+        top: y,
+        duration: 0.25,
+        ease: "power2.out"
+    });
 
     mensaje.innerText = frases[contador % frases.length];
+
     contador++;
 
-    /* CRECER BOTÓN SI */
+    /* crecer botón sí */
     tamaño += 0.1;
-    botonSi.style.transform = `scale(${tamaño})`;
+
+    gsap.to(botonSi, {
+        scale: tamaño,
+        duration: 0.3
+    });
 }
 
 /* =========================
@@ -76,22 +159,44 @@ function moverNo(){
 ========================= */
 botonSi.addEventListener("click", () => {
 
-    document.body.innerHTML = `
-    
-        <div class="final">
-            <h1>Te Amo mi bbshita 💖</h1>
-            <div class="corazon">
-                ❤️
-            </div>
-        </div>
-    
-    `;
+    gsap.to(".pregunta", {
+        opacity: 0,
+        scale: 1.2,
+        duration: 0.5,
+        onComplete: () => {
 
-    iniciarLluvia();
+            document.body.innerHTML = `
+            
+                <div class="final">
+
+                    <div class="contenido-final">
+
+                        <h1>TE AMO 💖</h1>
+
+                        <div class="corazon">
+                            ❤️
+                        </div>
+
+                    </div>
+
+                </div>
+            
+            `;
+
+            gsap.from(".contenido-final", {
+                scale: 0,
+                opacity: 0,
+                duration: 1.2,
+                ease: "elastic.out(1, 0.4)"
+            });
+
+            iniciarLluvia();
+        }
+    });
 });
 
 /* =========================
-   LLUVIA
+   LLUVIA LENTA
 ========================= */
 function iniciarLluvia(){
 
@@ -106,6 +211,7 @@ function iniciarLluvia(){
     setInterval(() => {
 
         const div = document.createElement("div");
+
         div.classList.add("lluvia");
 
         div.innerText =
@@ -115,13 +221,24 @@ function iniciarLluvia(){
             Math.random() * window.innerWidth + "px";
 
         div.style.fontSize =
-            (20 + Math.random() * 20) + "px";
+            (18 + Math.random() * 18) + "px";
 
         document.body.appendChild(div);
 
-        setTimeout(() => {
-            div.remove();
-        }, 5000);
+        gsap.fromTo(
+            div,
+            {
+                y: -100,
+                opacity: 1
+            },
+            {
+                y: window.innerHeight + 100,
+                opacity: 0,
+                duration: 8,
+                ease: "none",
+                onComplete: () => div.remove()
+            }
+        );
 
-    }, 250);
+    }, 500);
 }
