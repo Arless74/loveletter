@@ -1,8 +1,11 @@
-const sobre = document.getElementById("sobre");
+const sobre =
+    document.getElementById("sobre");
 
-const carta = document.getElementById("carta");
+const carta =
+    document.getElementById("carta");
 
-const pregunta = document.getElementById("pregunta");
+const pregunta =
+    document.getElementById("pregunta");
 
 const abrirPregunta =
     document.getElementById("abrirPregunta");
@@ -16,15 +19,19 @@ const botonNo =
 const mensaje =
     document.getElementById("mensaje");
 
-/* =========================
-   FRASES
-========================= */
+/* FRASES */
 const frases = [
+
     "yo sé que sí 😌",
+
     "piénsalo otra vez ❤️",
+
     "no puedes huir 😏",
+
     "te amo más 💖",
+
     "ya lo sabías 😳",
+
     "el botón no está tímido 😶"
 ];
 
@@ -230,27 +237,129 @@ botonSi.addEventListener("click", () => {
                             ❤️
                         </div>
 
+                        <button
+                            id="abrirTickets"
+                            class="btn-ticket"
+                        >
+                            🎟️ Ticket
+                        </button>
+
                     </div>
 
                 </div>
-            
+
+                <!-- MODAL -->
+                <div
+                    class="tickets oculto"
+                    id="tickets"
+                >
+                    <div class="tickets-contenido">
+                        <h2>
+                            🎟️ Cupones Canjeables
+                        </h2>
+
+                        <div class="lista-tickets">
+                            <div class="ticket">
+                                💆 Cupón para un masaje
+                            </div>
+                            <div class="ticket">
+                                🎮 Cupón para jugar cualquier juego
+                            </div>
+                            <div class="ticket">
+                                🍰 Cupón para un postre
+                            </div>
+                            <div class="ticket">
+                                🧅 Cupón para cebollita acaramelizada
+                            </div>
+                            <div class="ticket">
+                                🌙 Cupón para una salida
+                            </div>
+                            <div class="ticket">
+                                🎀 Cupón para una My Melody
+                            </div>
+                            <div class="ticket">
+                                ✨ Cupón para stickers
+                            </div>
+                            <div class="ticket">
+                                🖥️ Cupón para 1 noche de mods Sims
+                            </div>
+                            <div class="ticket">
+                                🍔 Cupón de hamburguesa
+                            </div>
+                            <div class="ticket">
+                                🍣 Cupón de HandRoll
+                            </div>
+
+                        </div>
+
+                        <button
+                            id="cerrarTickets"
+                            class="cerrar-ticket"
+                        >
+                            Cerrar
+                        </button>
+                    </div>
+                </div>
             `;
 
             gsap.from(".contenido-final",{
-
                 scale:0,
-
                 opacity:0,
-
                 duration:1.3,
-
                 ease:"elastic.out(1,0.4)"
             });
 
             iniciarLluvia();
+            iniciarTickets();
         }
     });
 });
+
+/* =========================
+   TICKETS
+========================= */
+function iniciarTickets(){
+
+    const abrirTickets =
+        document.getElementById("abrirTickets");
+
+    const tickets =
+        document.getElementById("tickets");
+
+    const cerrarTickets =
+        document.getElementById("cerrarTickets");
+
+    abrirTickets.addEventListener("click", () => {
+
+        tickets.classList.remove("oculto");
+
+        gsap.fromTo(
+            ".tickets-contenido",
+            {
+                scale:0.5,
+                opacity:0
+            },
+            {
+                scale:1,
+                opacity:1,
+                duration:0.7,
+                ease:"back.out(1.7)"
+            }
+        );
+    });
+
+    cerrarTickets.addEventListener("click", () => {
+        gsap.to(".tickets-contenido", {
+            scale:0.7,
+            opacity:0,
+            duration:0.4,
+
+            onComplete:() => {
+                tickets.classList.add("oculto");
+            }
+        });
+    });
+}
 
 /* =========================
    LLUVIA
@@ -258,20 +367,14 @@ botonSi.addEventListener("click", () => {
 function iniciarLluvia(){
 
     const textos = [
-
         "Te amo ❤️",
-
         "Siempre tú ✨",
-
         "Mi lugar favorito eres tú 💕",
-
         "Eres mi universo 🌙",
-
         "Contigo todo ❤️"
     ];
 
     setInterval(() => {
-
         const div =
             document.createElement("div");
 
