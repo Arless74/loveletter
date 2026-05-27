@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para Ti Conny ❤️</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- JS (UNO SOLO, BIEN CARGADO) -->
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <!-- INTRO (para nivel dios futuro) -->
+    <div id="intro" class="intro">
+        <h1>💌</h1>
+    </div>
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="contenedor">
+
+        <!-- CARTA -->
+        <div class="carta shadow-lg" id="carta">
+            <div class="p-4">
+                <div style="font-size:60px;">💌</div>
+                <h3 class="mt-3">Tienes una carta</h3>
+                <button class="btn btn-danger mt-3" id="abrir">
+                    Abrir
+                </button>
+            </div>
+        </div>
+
+        <!-- PREGUNTA -->
+        <div class="pregunta oculto text-center" id="pregunta">
+            <h2 class="mb-4" style="color:white; font-size:40px;">
+                ¿Me amas? ❤️
+            </h2>
+            <div class="d-flex justify-content-center gap-3">
+                <button class="btn btn-danger btn-lg" id="si">
+                    Sí 💖
+                </button>
+                <button class="btn btn-secondary btn-lg" id="no">
+                    No 😶
+                </button>
+            </div>
+            <p id="mensaje" class="mt-4 text-white"></p>
+        </div>
+    </div>
+</body>
+</html>

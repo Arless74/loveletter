@@ -1,0 +1,283 @@
+/* =========================
+   RESET GENERAL
+========================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   FONDO PRINCIPAL
+========================= */
+body{
+    height:100vh;
+    overflow:hidden;
+
+    background: linear-gradient(-45deg, #020111, #1a1a3d, #3a1c4d, #0b0b22);
+    background-size: 400% 400%;
+    animation: fondoAnim 12s ease infinite;
+
+    transition: 2s;
+}
+
+/* animación fondo */
+@keyframes fondoAnim{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* =========================
+   ESTRELLAS (FIX PRO)
+========================= */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+
+    background-size: 60px 60px, 120px 120px;
+    background-position: 0 0, 30px 30px;
+
+    opacity:0.25;
+    animation: estrellas 6s linear infinite;
+}
+
+@keyframes estrellas{
+    from{transform:translateY(0px);}
+    to{transform:translateY(20px);}
+}
+
+/* =========================
+   CAPAS (IMPORTANTE)
+========================= */
+.contenedor,
+.carta,
+.pregunta,
+.final{
+    position:relative;
+    z-index:2;
+}
+
+/* =========================
+   CONTENEDOR
+========================= */
+.contenedor{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* =========================
+   CARTA NIVEL DIOS
+========================= */
+.carta{
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(25px);
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    padding: 70px 60px;
+    border-radius: 30px;
+
+    text-align:center;
+
+    box-shadow: 0 40px 120px rgba(0,0,0,0.5);
+
+    transform: perspective(1200px) rotateX(8deg);
+
+    transition: 0.6s ease;
+}
+
+/* hover carta */
+.carta:hover{
+    transform: perspective(1200px) rotateX(0deg) scale(1.02);
+}
+
+/* =========================
+   BOTONES GENERALES
+========================= */
+button{
+    border:none;
+    padding:15px 30px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:18px;
+    transition:0.3s;
+}
+
+/* botón abrir */
+#abrir{
+    background:#ff4f93;
+    color:white;
+}
+
+#abrir:hover{
+    transform:scale(1.05);
+}
+
+/* =========================
+   PREGUNTA
+========================= */
+h2{
+    font-size:42px;
+    color:#ff2f7b;
+    margin-bottom:30px;
+}
+
+#si{
+    background:#ff4f93;
+    color:white;
+    position:absolute;
+    left:30px;
+}
+
+#si:hover{
+    transform:scale(1.1);
+}
+
+#no{
+    background:#666;
+    color:white;
+    position:absolute;
+    right:30px;
+}
+
+/* mensaje */
+#mensaje{
+    margin-top:25px;
+    color:#ff2f7b;
+    font-size:20px;
+    font-weight:bold;
+    min-height:30px;
+}
+
+/* =========================
+   OCULTO
+========================= */
+.oculto{
+    display:none;
+}
+
+/* =========================
+   FINAL NIVEL DIOS
+========================= */
+.final{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    animation: aparecer 1s ease;
+}
+
+/* animación entrada */
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* corazón grande */
+.corazon-grande{
+    font-size:140px;
+    animation:latido 1s infinite;
+}
+
+/* texto final */
+.final h1{
+    color:white;
+    font-size:60px;
+    margin-top:20px;
+}
+
+.final p{
+    color:white;
+    font-size:24px;
+    margin-top:10px;
+}
+
+/* latido corazón */
+@keyframes latido{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+}
+
+/* =========================
+   LLUVIA
+========================= */
+.lluvia{
+    position:fixed;
+    top:-50px;
+
+    color:white;
+    font-weight:bold;
+
+    pointer-events:none;
+    z-index:1;
+
+    opacity:0.9;
+
+    animation: caer linear forwards;
+}
+
+@keyframes caer{
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+
+/* =========================
+   FLORES
+========================= */
+.flor{
+    position:fixed;
+    bottom:-50px;
+
+    font-size:30px;
+
+    pointer-events:none;
+    z-index:3;
+
+    animation: crecer 5s ease forwards;
+}
+
+/* crecimiento flores */
+@keyframes crecer{
+    from{
+        transform:scale(0);
+        opacity:0;
+    }
+    to{
+        transform:scale(1.5);
+        opacity:1;
+    }
+}
+
+/* =========================
+   FONDO FINAL (opcional)
+========================= */
+.noche-final{
+    background: linear-gradient(to top, #000000, #0b0b2a) !important;
+}
