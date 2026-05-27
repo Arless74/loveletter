@@ -9,17 +9,14 @@ const botonNo = document.getElementById("no");
 
 const mensaje = document.getElementById("mensaje");
 
-/* =========================
-   FRASES
-========================= */
+/* FRASES */
 const frases = [
     "yo sé que sí 😌",
     "piénsalo otra vez ❤️",
     "no puedes huir 😏",
     "te amo más 💖",
     "ya lo sabías 😳",
-    "el botón no está tímido 😶",
-    "inténtalo otra vez 😂"
+    "el botón no está tímido 😶"
 ];
 
 let contador = 0;
@@ -34,24 +31,23 @@ sobre.addEventListener("click", () => {
 
     /* abrir tapa */
     gsap.to(".tapa", {
-        rotateX: 180,
-        duration: 1.3,
-        ease: "power2.inOut",
-        transformOrigin: "top"
+        rotateX:180,
+        duration:1.3,
+        ease:"power2.inOut"
     });
 
-    /* sacar carta */
+    /* carta sale */
     gsap.to(".carta-interna", {
-        y: -120,
-        duration: 1.2,
-        delay: 0.3,
-        ease: "power3.out"
+        y:-160,
+        duration:1.2,
+        delay:0.3,
+        ease:"power3.out"
     });
 
     /* rebote */
     gsap.to(".sobre", {
-        y: -10,
-        duration: 0.4,
+        y:-10,
+        duration:0.4,
         repeat:1,
         yoyo:true
     });
@@ -62,8 +58,7 @@ sobre.addEventListener("click", () => {
             opacity:0,
             scale:0.8,
             duration:0.8,
-            ease:"power2.out",
-            onComplete: () => {
+            onComplete:() => {
 
                 sobre.style.display = "none";
 
@@ -81,13 +76,13 @@ sobre.addEventListener("click", () => {
                         y:0,
                         scale:1,
                         duration:1.2,
-                        ease:"elastic.out(1, 0.5)"
+                        ease:"elastic.out(1,0.5)"
                     }
                 );
             }
         });
 
-    }, 1800);
+    },1800);
 });
 
 /* =========================
@@ -100,8 +95,7 @@ abrirPregunta.addEventListener("click", () => {
         y:-50,
         scale:0.8,
         duration:0.5,
-        ease:"power2.in",
-        onComplete: () => {
+        onComplete:() => {
 
             carta.classList.add("oculto");
 
@@ -146,11 +140,10 @@ function moverNo(){
         Math.random() *
         (rect.height - botonNo.offsetHeight);
 
-    gsap.to(botonNo, {
+    gsap.to(botonNo,{
         left:x,
         top:y,
-        duration:0.25,
-        ease:"power2.out"
+        duration:0.25
     });
 
     mensaje.innerText =
@@ -160,7 +153,7 @@ function moverNo(){
 
     tamaño += 0.1;
 
-    gsap.to(botonSi, {
+    gsap.to(botonSi,{
         scale:tamaño,
         duration:0.3
     });
@@ -172,13 +165,17 @@ function moverNo(){
 botonSi.addEventListener("click", () => {
 
     gsap.to(".pregunta", {
+
         opacity:0,
         scale:1.2,
         duration:0.5,
-        onComplete: () => {
+
+        onComplete:() => {
 
             document.body.innerHTML = `
             
+                <div class="estrellas"></div>
+
                 <div class="final">
 
                     <div class="contenido-final">
@@ -195,11 +192,11 @@ botonSi.addEventListener("click", () => {
             
             `;
 
-            gsap.from(".contenido-final", {
+            gsap.from(".contenido-final",{
                 scale:0,
                 opacity:0,
                 duration:1.3,
-                ease:"elastic.out(1, 0.4)"
+                ease:"elastic.out(1,0.4)"
             });
 
             iniciarLluvia();
@@ -214,9 +211,9 @@ function iniciarLluvia(){
 
     const textos = [
         "Te amo ❤️",
-        "Eres todo 💖",
         "Siempre tú ✨",
         "Mi lugar favorito eres tú 💕",
+        "Eres mi universo 🌙",
         "Contigo todo ❤️"
     ];
 
@@ -230,7 +227,7 @@ function iniciarLluvia(){
         div.innerText =
             textos[
                 Math.floor(
-                    Math.random() * textos.length
+                    Math.random()*textos.length
                 )
             ];
 
@@ -239,7 +236,7 @@ function iniciarLluvia(){
             window.innerWidth + "px";
 
         div.style.fontSize =
-            (18 + Math.random() * 18) + "px";
+            (18 + Math.random()*18) + "px";
 
         document.body.appendChild(div);
 
@@ -254,9 +251,9 @@ function iniciarLluvia(){
                 opacity:0,
                 duration:10,
                 ease:"none",
-                onComplete: () => div.remove()
+                onComplete:() => div.remove()
             }
         );
 
-    }, 700);
+    },700);
 }
