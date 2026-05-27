@@ -46,7 +46,6 @@ sobre.addEventListener("click", () => {
 
     sobre.style.pointerEvents = "none";
 
-    /* abrir tapa */
     gsap.to(".tapa", {
 
         rotateX:180,
@@ -56,7 +55,6 @@ sobre.addEventListener("click", () => {
         ease:"power2.inOut"
     });
 
-    /* sacar carta */
     gsap.to(".carta-interna", {
 
         y:-180,
@@ -68,7 +66,6 @@ sobre.addEventListener("click", () => {
         ease:"power3.out"
     });
 
-    /* rebote */
     gsap.to(".sobre", {
 
         y:-10,
@@ -241,53 +238,144 @@ botonSi.addEventListener("click", () => {
                             id="abrirTickets"
                             class="btn-ticket"
                         >
-                            🎟️ Ticket
+                            🎟️ Tickets
                         </button>
 
                     </div>
 
                 </div>
 
-                <!-- MODAL -->
                 <div
                     class="tickets oculto"
                     id="tickets"
                 >
+
                     <div class="tickets-contenido">
+
                         <h2>
                             🎟️ Cupones Canjeables
                         </h2>
 
                         <div class="lista-tickets">
-                            <div class="ticket">
-                                💆 Cupón para un masaje
+
+                            <div class="ticket" data-copy="Cupón para un masaje 💆">
+                                <div class="ticket-main">
+                                    <span>VÁLIDO POR</span>
+                                    <h3>UN MASAJE 💆</h3>
+                                    <small>❤️ ❤️ ❤️</small>
+                                </div>
+
+                                <div class="ticket-side">
+                                    CUPÓN
+                                </div>
                             </div>
-                            <div class="ticket">
-                                🎮 Cupón para jugar cualquier juego
+
+                            <div class="ticket" data-copy="Cupón para jugar cualquier juego 🎮">
+                                <div class="ticket-main">
+                                    <span>VÁLIDO POR</span>
+                                    <h3>JUGAR LO QUE QUIERAS 🎮</h3>
+                                    <small>❤️ ❤️ ❤️</small>
+                                </div>
+
+                                <div class="ticket-side">
+                                    CUPÓN
+                                </div>
                             </div>
-                            <div class="ticket">
-                                🍰 Cupón para un postre
+
+                            <div class="ticket" data-copy="Cupón para un postre 🍰">
+                                <div class="ticket-main">
+                                    <span>VÁLIDO POR</span>
+                                    <h3>UN POSTRE 🍰</h3>
+                                    <small>❤️ ❤️ ❤️</small>
+                                </div>
+
+                                <div class="ticket-side">
+                                    CUPÓN
+                                </div>
                             </div>
-                            <div class="ticket">
-                                🧅 Cupón para cebollita acaramelizada
+
+                            <div class="ticket" data-copy="Cupón para cebollita acaramelizada 🧅">
+                                <div class="ticket-main">
+                                    <span>VÁLIDO POR</span>
+                                    <h3>CEBOLLITA ACARAMELIZADA 🧅</h3>
+                                    <small>❤️ ❤️ ❤️</small>
+                                </div>
+
+                                <div class="ticket-side">
+                                    CUPÓN
+                                </div>
                             </div>
-                            <div class="ticket">
-                                🌙 Cupón para una salida
+
+                            <div class="ticket" data-copy="Cupón para una salida 🌙">
+                                <div class="ticket-main">
+                                    <span>VÁLIDO POR</span>
+                                    <h3>UNA SALIDA 🌙</h3>
+                                    <small>❤️ ❤️ ❤️</small>
+                                </div>
+
+                                <div class="ticket-side">
+                                    CUPÓN
+                                </div>
                             </div>
-                            <div class="ticket">
-                                🎀 Cupón para una My Melody
+
+                            <div class="ticket" data-copy="Cupón para una My Melody 🎀">
+                                <div class="ticket-main">
+                                    <span>VÁLIDO POR</span>
+                                    <h3>UNA MY MELODY 🎀</h3>
+                                    <small>❤️ ❤️ ❤️</small>
+                                </div>
+
+                                <div class="ticket-side">
+                                    CUPÓN
+                                </div>
                             </div>
-                            <div class="ticket">
-                                ✨ Cupón para stickers
+
+                            <div class="ticket" data-copy="Cupón para stickers ✨">
+                                <div class="ticket-main">
+                                    <span>VÁLIDO POR</span>
+                                    <h3>STICKERS ✨</h3>
+                                    <small>❤️ ❤️ ❤️</small>
+                                </div>
+
+                                <div class="ticket-side">
+                                    CUPÓN
+                                </div>
                             </div>
-                            <div class="ticket">
-                                🖥️ Cupón para 1 noche de mods Sims
+
+                            <div class="ticket" data-copy="Cupón para 1 noche de mods Sims 🖥️">
+                                <div class="ticket-main">
+                                    <span>VÁLIDO POR</span>
+                                    <h3>1 NOCHE DE MODS SIMS 🖥️</h3>
+                                    <small>❤️ ❤️ ❤️</small>
+                                </div>
+
+                                <div class="ticket-side">
+                                    CUPÓN
+                                </div>
                             </div>
-                            <div class="ticket">
-                                🍔 Cupón de hamburguesa
+
+                            <div class="ticket" data-copy="Cupón para hamburguesa 🍔">
+                                <div class="ticket-main">
+                                    <span>VÁLIDO POR</span>
+                                    <h3>HAMBURGUESA 🍔</h3>
+                                    <small>❤️ ❤️ ❤️</small>
+                                </div>
+
+                                <div class="ticket-side">
+                                    CUPÓN
+                                </div>
                             </div>
-                            <div class="ticket">
-                                🍣 Cupón de HandRoll
+
+                            <div class="ticket" data-copy="Cupón para HandRoll 🍣">
+                                <div class="ticket-main">
+                                    <span>VÁLIDO POR</span>
+                                    <h3>HANDROLL 🍣</h3>
+                                    <small>❤️ ❤️ ❤️</small>
+                                </div>
+
+                                <div class="ticket-side">
+                                    CUPÓN
+                                </div>
                             </div>
 
                         </div>
@@ -298,18 +386,26 @@ botonSi.addEventListener("click", () => {
                         >
                             Cerrar
                         </button>
+
                     </div>
+
                 </div>
+            
             `;
 
             gsap.from(".contenido-final",{
+
                 scale:0,
+
                 opacity:0,
+
                 duration:1.3,
+
                 ease:"elastic.out(1,0.4)"
             });
 
             iniciarLluvia();
+
             iniciarTickets();
         }
     });
@@ -349,15 +445,94 @@ function iniciarTickets(){
     });
 
     cerrarTickets.addEventListener("click", () => {
+
         gsap.to(".tickets-contenido", {
+
             scale:0.7,
+
             opacity:0,
+
             duration:0.4,
 
             onComplete:() => {
+
                 tickets.classList.add("oculto");
             }
         });
+    });
+
+    /* TICKETS */
+    const todosTickets =
+        document.querySelectorAll(".ticket");
+
+    todosTickets.forEach(ticket => {
+
+        ticket.addEventListener("click", async () => {
+
+            const texto =
+                ticket.dataset.copy;
+
+            await navigator.clipboard.writeText(texto);
+
+            ticket.classList.add("cortado");
+
+            setTimeout(() => {
+
+                ticket.classList.remove("cortado");
+
+            },700);
+
+            /* AVISO */
+            const aviso =
+                document.createElement("div");
+
+            aviso.innerText =
+                "🎟️ Cupón copiado";
+
+            aviso.style.position = "fixed";
+            aviso.style.bottom = "30px";
+            aviso.style.left = "50%";
+            aviso.style.transform = "translateX(-50%)";
+
+            aviso.style.background = "#ff4f93";
+            aviso.style.color = "white";
+
+            aviso.style.padding = "14px 24px";
+
+            aviso.style.borderRadius = "14px";
+
+            aviso.style.zIndex = "9999";
+
+            aviso.style.fontWeight = "bold";
+
+            document.body.appendChild(aviso);
+
+            gsap.fromTo(
+                aviso,
+                {
+                    opacity:0,
+                    y:30
+                },
+                {
+                    opacity:1,
+                    y:0,
+                    duration:0.4
+                }
+            );
+
+            setTimeout(() => {
+
+                gsap.to(aviso,{
+                    opacity:0,
+                    y:20,
+                    duration:0.4,
+                    onComplete:() => aviso.remove()
+                });
+
+            },1500);
+
+        });
+
     });
 }
 
@@ -367,14 +542,20 @@ function iniciarTickets(){
 function iniciarLluvia(){
 
     const textos = [
+
         "Te amo ❤️",
+
         "Siempre tú ✨",
+
         "Mi lugar favorito eres tú 💕",
+
         "Eres mi universo 🌙",
+
         "Contigo todo ❤️"
     ];
 
     setInterval(() => {
+
         const div =
             document.createElement("div");
 
