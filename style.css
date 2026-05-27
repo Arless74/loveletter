@@ -9,8 +9,17 @@ body{
     width:100%;
     height:100vh;
     overflow:hidden;
-    background: linear-gradient(-45deg,#020111,#1a1a3d,#3a1c4d,#ff2f7b);
+
+    background:linear-gradient(
+        -45deg,
+        #020111,
+        #1a1a3d,
+        #3a1c4d,
+        #ff2f7b
+    );
+
     background-size:400% 400%;
+
     animation:fondo 12s ease infinite;
 }
 
@@ -18,12 +27,15 @@ body{
    FONDO
 ========================= */
 @keyframes fondo{
+
     0%{
         background-position:0% 50%;
     }
+
     50%{
         background-position:100% 50%;
     }
+
     100%{
         background-position:0% 50%;
     }
@@ -35,58 +47,161 @@ body{
 .contenedor{
     width:100%;
     height:100%;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     position:relative;
 }
 
 /* =========================
-   SOBRE
+   SOBRE REALISTA
 ========================= */
 .sobre{
-    width:280px;
-    height:180px;
+    width:340px;
+    height:230px;
+
     position:relative;
+
     cursor:pointer;
-    transition:0.7s ease;
+
+    perspective:1200px;
 }
 
+/* CUERPO */
 .cuerpo{
     width:100%;
     height:100%;
-    background:#ff4f93;
+
     position:absolute;
     bottom:0;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+
+    background:linear-gradient(
+        135deg,
+        #ffffff,
+        #ececec
+    );
+
+    border-radius:14px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.35),
+        inset 0 0 15px rgba(255,255,255,0.8);
+
+    overflow:hidden;
 }
 
+/* EFECTO INTERIOR */
+.cuerpo::before{
+    content:"";
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            45deg,
+            transparent 49%,
+            rgba(0,0,0,0.05) 50%
+        );
+
+    opacity:0.5;
+}
+
+/* TAPA */
 .tapa{
     width:100%;
     height:100%;
-    background:#ff2f7b;
+
     position:absolute;
+
     top:0;
-    clip-path: polygon(0 0, 100% 0, 50% 60%);
+    left:0;
+
+    background:linear-gradient(
+        135deg,
+        #ffffff,
+        #dfdfdf
+    );
+
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        50% 62%
+    );
+
     transform-origin:top;
-    transition:1s ease;
+
+    z-index:5;
+
     border-radius:10px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.15);
+
+    backface-visibility:hidden;
 }
 
+/* CARTA INTERIOR */
+.carta-interna{
+    width:88%;
+    height:85%;
+
+    position:absolute;
+
+    left:50%;
+    top:10px;
+
+    transform:translateX(-50%);
+
+    background:white;
+
+    border-radius:10px;
+
+    z-index:1;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.15);
+}
+
+/* TEXTO */
 .texto-sobre{
     position:absolute;
+
     width:100%;
-    top:70px;
+
+    bottom:25px;
+
     text-align:center;
-    color:white;
-    font-size:22px;
+
+    color:#ff4f93;
+
+    font-size:24px;
     font-weight:bold;
+
     z-index:10;
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,0.1);
 }
 
-.sobre.abierto .tapa{
-    transform: rotateX(180deg);
+/* CORAZÓN */
+.sobre::after{
+    content:"❤️";
+
+    position:absolute;
+
+    top:52%;
+    left:50%;
+
+    transform:translate(-50%, -50%);
+
+    font-size:50px;
+
+    z-index:4;
 }
 
 /* =========================
@@ -94,26 +209,32 @@ body{
 ========================= */
 .carta{
     background:rgba(255,255,255,0.15);
+
     padding:50px;
+
     border-radius:25px;
+
     text-align:center;
+
     color:white;
+
     backdrop-filter:blur(15px);
-    box-shadow:0 10px 40px rgba(0,0,0,0.3);
-    animation:aparecer 1s ease;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.3);
 }
 
-.contenido-carta .emoji{
-    font-size:70px;
+.emoji{
+    font-size:75px;
 }
 
 .contenido-carta h2{
     margin-top:15px;
-    font-size:35px;
+    font-size:38px;
 }
 
 .contenido-carta p{
-    margin-top:10px;
+    margin-top:12px;
     font-size:18px;
     opacity:0.9;
 }
@@ -124,12 +245,11 @@ body{
 .pregunta{
     text-align:center;
     color:white;
-    animation:aparecer 0.8s ease;
 }
 
 .pregunta h1{
-    margin-bottom:30px;
-    font-size:55px;
+    font-size:58px;
+    margin-bottom:35px;
 }
 
 /* =========================
@@ -137,28 +257,38 @@ body{
 ========================= */
 .botones{
     position:relative;
+
     width:320px;
     height:180px;
+
     margin:auto;
 }
 
 #si,
 #no{
     position:absolute;
+
     padding:14px 28px;
+
     border:none;
     border-radius:14px;
+
     cursor:pointer;
+
     font-size:18px;
     font-weight:bold;
+
     transition:0.3s ease;
 }
 
 #si{
     left:30px;
+
     background:#ff4f93;
     color:white;
-    box-shadow:0 5px 15px rgba(255,79,147,0.5);
+
+    box-shadow:
+        0 5px 15px rgba(255,79,147,0.5);
 }
 
 #si:hover{
@@ -167,7 +297,8 @@ body{
 
 #no{
     right:30px;
-    background:#555;
+
+    background:#666;
     color:white;
 }
 
@@ -176,9 +307,12 @@ body{
 ========================= */
 #mensaje{
     margin-top:20px;
-    font-size:24px;
-    color:#ff9dc3;
+
     min-height:30px;
+
+    color:#ff9dc3;
+
+    font-size:24px;
 }
 
 /* =========================
@@ -187,24 +321,42 @@ body{
 .final{
     width:100%;
     height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    color:white;
+}
+
+.contenido-final{
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    color:white;
-    position:relative;
-    overflow:hidden;
+
+    text-align:center;
+
+    z-index:2;
+
+    padding:20px;
 }
 
 .final h1{
-    font-size:80px;
-    z-index:2;
-    animation:zoom 1s ease infinite alternate;
+    font-size:90px;
+
+    line-height:1.2;
+
+    animation:zoom 1.2s ease infinite alternate;
 }
 
 .corazon{
-    font-size:130px;
-    z-index:2;
+    font-size:140px;
+
     animation:latido 1s infinite;
 }
 
@@ -213,12 +365,14 @@ body{
 ========================= */
 .lluvia{
     position:absolute;
-    top:-50px;
-    font-size:25px;
+
+    top:-100px;
+
     color:white;
-    animation:caer 5s linear forwards;
-    pointer-events:none;
+
     white-space:nowrap;
+
+    pointer-events:none;
 }
 
 /* =========================
@@ -231,42 +385,29 @@ body{
 /* =========================
    ANIMACIONES
 ========================= */
-@keyframes aparecer{
-    from{
-        opacity:0;
-        transform:scale(0.8);
-    }
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
-
 @keyframes latido{
+
     0%{
         transform:scale(1);
     }
+
     50%{
-        transform:scale(1.2);
+        transform:scale(1.15);
     }
+
     100%{
         transform:scale(1);
     }
 }
 
 @keyframes zoom{
+
     from{
         transform:scale(1);
     }
-    to{
-        transform:scale(1.08);
-    }
-}
 
-@keyframes caer{
     to{
-        transform:translateY(110vh);
-        opacity:0;
+        transform:scale(1.06);
     }
 }
 
@@ -274,37 +415,24 @@ body{
    RESPONSIVE
 ========================= */
 @media(max-width:600px){
+
+    .sobre{
+        transform:scale(0.85);
+    }
+
     .pregunta h1{
         font-size:40px;
     }
 
-    .botones{
-        width:280px;
-    }
-
     .final h1{
-        font-size:50px;
+        font-size:55px;
     }
 
     .corazon{
         font-size:90px;
     }
-}
 
-/* =========================
-   FINAL CENTRADO
-========================= */
-.contenido-final{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    z-index:2;
-    padding:20px;
-}
-
-.final h1{
-    text-align:center;
-    line-height:1.2;
+    .botones{
+        width:280px;
+    }
 }

@@ -26,7 +26,7 @@ let contador = 0;
 let tamaño = 1;
 
 /* =========================
-   ANIMACIÓN SOBRE (GSAP)
+   ABRIR SOBRE
 ========================= */
 sobre.addEventListener("click", () => {
 
@@ -35,53 +35,59 @@ sobre.addEventListener("click", () => {
     /* abrir tapa */
     gsap.to(".tapa", {
         rotateX: 180,
-        duration: 1.2,
+        duration: 1.3,
         ease: "power2.inOut",
         transformOrigin: "top"
     });
 
-    /* pequeño rebote */
-    gsap.to(".sobre", {
-        y: -15,
-        duration: 0.5,
-        repeat: 1,
-        yoyo: true,
-        ease: "power1.inOut"
+    /* sacar carta */
+    gsap.to(".carta-interna", {
+        y: -120,
+        duration: 1.2,
+        delay: 0.3,
+        ease: "power3.out"
     });
 
-    /* desaparecer sobre */
+    /* rebote */
     gsap.to(".sobre", {
-        delay: 1,
-        opacity: 0,
-        scale: 0.8,
-        duration: 0.8,
-        ease: "power2.out",
-        onComplete: () => {
-
-            sobre.style.display = "none";
-
-            carta.classList.remove("oculto");
-
-            /* aparecer carta */
-            gsap.fromTo(
-                ".carta",
-                {
-                    opacity: 0,
-                    y: 80,
-                    scale: 0.7,
-                    rotate: -5
-                },
-                {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    rotate: 0,
-                    duration: 1.2,
-                    ease: "elastic.out(1, 0.5)"
-                }
-            );
-        }
+        y: -10,
+        duration: 0.4,
+        repeat:1,
+        yoyo:true
     });
+
+    setTimeout(() => {
+
+        gsap.to(".sobre", {
+            opacity:0,
+            scale:0.8,
+            duration:0.8,
+            ease:"power2.out",
+            onComplete: () => {
+
+                sobre.style.display = "none";
+
+                carta.classList.remove("oculto");
+
+                gsap.fromTo(
+                    ".carta",
+                    {
+                        opacity:0,
+                        y:80,
+                        scale:0.7
+                    },
+                    {
+                        opacity:1,
+                        y:0,
+                        scale:1,
+                        duration:1.2,
+                        ease:"elastic.out(1, 0.5)"
+                    }
+                );
+            }
+        });
+
+    }, 1800);
 });
 
 /* =========================
@@ -90,11 +96,11 @@ sobre.addEventListener("click", () => {
 abrirPregunta.addEventListener("click", () => {
 
     gsap.to(".carta", {
-        opacity: 0,
-        y: -50,
-        scale: 0.8,
-        duration: 0.5,
-        ease: "power2.in",
+        opacity:0,
+        y:-50,
+        scale:0.8,
+        duration:0.5,
+        ease:"power2.in",
         onComplete: () => {
 
             carta.classList.add("oculto");
@@ -104,14 +110,14 @@ abrirPregunta.addEventListener("click", () => {
             gsap.fromTo(
                 ".pregunta",
                 {
-                    opacity: 0,
-                    scale: 0.7
+                    opacity:0,
+                    scale:0.7
                 },
                 {
-                    opacity: 1,
-                    scale: 1,
-                    duration: 1,
-                    ease: "back.out(1.7)"
+                    opacity:1,
+                    scale:1,
+                    duration:1,
+                    ease:"back.out(1.7)"
                 }
             );
         }
@@ -126,31 +132,37 @@ botonNo.addEventListener("click", moverNo);
 
 function moverNo(){
 
-    const contenedor = document.querySelector(".botones");
+    const contenedor =
+        document.querySelector(".botones");
 
-    const rect = contenedor.getBoundingClientRect();
+    const rect =
+        contenedor.getBoundingClientRect();
 
-    const x = Math.random() * (rect.width - botonNo.offsetWidth);
+    const x =
+        Math.random() *
+        (rect.width - botonNo.offsetWidth);
 
-    const y = Math.random() * (rect.height - botonNo.offsetHeight);
+    const y =
+        Math.random() *
+        (rect.height - botonNo.offsetHeight);
 
     gsap.to(botonNo, {
-        left: x,
-        top: y,
-        duration: 0.25,
-        ease: "power2.out"
+        left:x,
+        top:y,
+        duration:0.25,
+        ease:"power2.out"
     });
 
-    mensaje.innerText = frases[contador % frases.length];
+    mensaje.innerText =
+        frases[contador % frases.length];
 
     contador++;
 
-    /* crecer botón sí */
     tamaño += 0.1;
 
     gsap.to(botonSi, {
-        scale: tamaño,
-        duration: 0.3
+        scale:tamaño,
+        duration:0.3
     });
 }
 
@@ -160,9 +172,9 @@ function moverNo(){
 botonSi.addEventListener("click", () => {
 
     gsap.to(".pregunta", {
-        opacity: 0,
-        scale: 1.2,
-        duration: 0.5,
+        opacity:0,
+        scale:1.2,
+        duration:0.5,
         onComplete: () => {
 
             document.body.innerHTML = `
@@ -184,10 +196,10 @@ botonSi.addEventListener("click", () => {
             `;
 
             gsap.from(".contenido-final", {
-                scale: 0,
-                opacity: 0,
-                duration: 1.2,
-                ease: "elastic.out(1, 0.4)"
+                scale:0,
+                opacity:0,
+                duration:1.3,
+                ease:"elastic.out(1, 0.4)"
             });
 
             iniciarLluvia();
@@ -196,7 +208,7 @@ botonSi.addEventListener("click", () => {
 });
 
 /* =========================
-   LLUVIA LENTA
+   LLUVIA
 ========================= */
 function iniciarLluvia(){
 
@@ -210,15 +222,21 @@ function iniciarLluvia(){
 
     setInterval(() => {
 
-        const div = document.createElement("div");
+        const div =
+            document.createElement("div");
 
         div.classList.add("lluvia");
 
         div.innerText =
-            textos[Math.floor(Math.random() * textos.length)];
+            textos[
+                Math.floor(
+                    Math.random() * textos.length
+                )
+            ];
 
         div.style.left =
-            Math.random() * window.innerWidth + "px";
+            Math.random() *
+            window.innerWidth + "px";
 
         div.style.fontSize =
             (18 + Math.random() * 18) + "px";
@@ -228,17 +246,17 @@ function iniciarLluvia(){
         gsap.fromTo(
             div,
             {
-                y: -100,
-                opacity: 1
+                y:-100,
+                opacity:1
             },
             {
-                y: window.innerHeight + 100,
-                opacity: 0,
-                duration: 8,
-                ease: "none",
+                y:window.innerHeight + 150,
+                opacity:0,
+                duration:10,
+                ease:"none",
                 onComplete: () => div.remove()
             }
         );
 
-    }, 500);
+    }, 700);
 }
