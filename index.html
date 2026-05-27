@@ -4,54 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Para Ti ❤️</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
-
     <script defer src="script.js"></script>
 </head>
 
 <body>
 
-<!-- SOBRE -->
-<div class="contenedor">
-
-    <div class="sobre" id="sobre">
-        <div class="cuerpo"></div>
-        <div class="tapa"></div>
-        <p>💌 Toca para abrir</p>
-    </div>
-
-    <!-- CARTA -->
-    <div class="carta oculto" id="carta">
-        <div class="p-4">
-            <div style="font-size:60px;">💌</div>
-            <h3>Te tengo algo...</h3>
-
-            <button class="btn btn-danger mt-3" id="abrirPregunta">
-                Abrir carta
-            </button>
-        </div>
-    </div>
-
-    <!-- PREGUNTA -->
-    <div class="pregunta oculto" id="pregunta">
-
-        <h2>¿Me amas? ❤️</h2>
-
-        <div class="botones">
-            <button id="si">Sí 💖</button>
-            <button id="no">No 😶</button>
+    <!-- CONTENEDOR -->
+    <div class="contenedor">
+        <!-- SOBRE -->
+        <div class="sobre" id="sobre">
+            <div class="cuerpo"></div>
+            <div class="tapa"></div>
+            <div class="texto-sobre">
+                💌 Toca para abrir
+            </div>
         </div>
 
-        <p id="mensaje"></p>
+        <!-- CARTA -->
+        <div class="carta oculto" id="carta">
+            <div class="contenido-carta">
+                <div class="emoji">💌</div>
+                <h2>Te tengo algo...</h2>
+                <p>
+                    Hay algo que quiero preguntarte ❤️
+                </p>
+                <button class="btn btn-danger mt-3" id="abrirPregunta">
+                    Abrir carta
+                </button>
+            </div>
+        </div>
 
+        <!-- PREGUNTA -->
+        <div class="pregunta oculto" id="pregunta">
+            <h1>¿Me amas? ❤️</h1>
+            <div class="botones">
+                <button id="si">
+                    Sí 💖
+                </button>
+                <button id="no">
+                    No 😶
+                </button>
+            </div>
+            <p id="mensaje"></p>
+        </div>
     </div>
-
-</div>
 
 </body>
 </html>

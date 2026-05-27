@@ -2,24 +2,36 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: Arial;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
+    width:100%;
     height:100vh;
     overflow:hidden;
-    background: linear-gradient(-45deg,#020111,#1a1a3d,#3a1c4d);
+    background: linear-gradient(-45deg,#020111,#1a1a3d,#3a1c4d,#ff2f7b);
     background-size:400% 400%;
-    animation:fondo 10s ease infinite;
+    animation:fondo 12s ease infinite;
 }
 
+/* =========================
+   FONDO
+========================= */
 @keyframes fondo{
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0%{
+        background-position:0% 50%;
+    }
+    50%{
+        background-position:100% 50%;
+    }
+    100%{
+        background-position:0% 50%;
+    }
 }
 
-/* CONTENEDOR */
+/* =========================
+   CONTENEDOR
+========================= */
 .contenedor{
     width:100%;
     height:100%;
@@ -33,14 +45,11 @@ body{
    SOBRE
 ========================= */
 .sobre{
-    width:260px;
-    height:160px;
-    position:absolute;
+    width:280px;
+    height:180px;
+    position:relative;
     cursor:pointer;
-    transform-style:preserve-3d;
-    transition:0.6s;
-    text-align:center;
-    color:white;
+    transition:0.7s ease;
 }
 
 .cuerpo{
@@ -49,7 +58,8 @@ body{
     background:#ff4f93;
     position:absolute;
     bottom:0;
-    border-radius:10px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
 }
 
 .tapa{
@@ -60,7 +70,19 @@ body{
     top:0;
     clip-path: polygon(0 0, 100% 0, 50% 60%);
     transform-origin:top;
-    transition:0.8s ease;
+    transition:1s ease;
+    border-radius:10px;
+}
+
+.texto-sobre{
+    position:absolute;
+    width:100%;
+    top:70px;
+    text-align:center;
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+    z-index:10;
 }
 
 .sobre.abierto .tapa{
@@ -73,9 +95,27 @@ body{
 .carta{
     background:rgba(255,255,255,0.15);
     padding:50px;
-    border-radius:20px;
+    border-radius:25px;
     text-align:center;
+    color:white;
     backdrop-filter:blur(15px);
+    box-shadow:0 10px 40px rgba(0,0,0,0.3);
+    animation:aparecer 1s ease;
+}
+
+.contenido-carta .emoji{
+    font-size:70px;
+}
+
+.contenido-carta h2{
+    margin-top:15px;
+    font-size:35px;
+}
+
+.contenido-carta p{
+    margin-top:10px;
+    font-size:18px;
+    opacity:0.9;
 }
 
 /* =========================
@@ -84,47 +124,169 @@ body{
 .pregunta{
     text-align:center;
     color:white;
+    animation:aparecer 0.8s ease;
 }
 
-h2{
-    margin-bottom:20px;
+.pregunta h1{
+    margin-bottom:30px;
+    font-size:55px;
 }
 
-/* BOTONES */
+/* =========================
+   BOTONES
+========================= */
 .botones{
     position:relative;
-    width:250px;
-    height:120px;
+    width:320px;
+    height:180px;
     margin:auto;
 }
 
-#si,#no{
+#si,
+#no{
     position:absolute;
-    padding:12px 25px;
+    padding:14px 28px;
     border:none;
-    border-radius:10px;
+    border-radius:14px;
     cursor:pointer;
+    font-size:18px;
+    font-weight:bold;
+    transition:0.3s ease;
 }
 
 #si{
-    left:20px;
+    left:30px;
     background:#ff4f93;
     color:white;
+    box-shadow:0 5px 15px rgba(255,79,147,0.5);
+}
+
+#si:hover{
+    transform:scale(1.05);
 }
 
 #no{
-    right:20px;
-    background:#666;
+    right:30px;
+    background:#555;
     color:white;
 }
 
-/* MENSAJE */
+/* =========================
+   MENSAJE
+========================= */
 #mensaje{
     margin-top:20px;
-    color:#ff4f93;
+    font-size:24px;
+    color:#ff9dc3;
+    min-height:30px;
 }
 
-/* OCULTO */
+/* =========================
+   FINAL
+========================= */
+.final{
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+.final h1{
+    font-size:80px;
+    z-index:2;
+    animation:zoom 1s ease infinite alternate;
+}
+
+.corazon{
+    font-size:130px;
+    z-index:2;
+    animation:latido 1s infinite;
+}
+
+/* =========================
+   LLUVIA
+========================= */
+.lluvia{
+    position:absolute;
+    top:-50px;
+    font-size:25px;
+    color:white;
+    animation:caer 5s linear forwards;
+    pointer-events:none;
+    white-space:nowrap;
+}
+
+/* =========================
+   OCULTO
+========================= */
 .oculto{
     display:none;
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:scale(0.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes latido{
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.2);
+    }
+    100%{
+        transform:scale(1);
+    }
+}
+
+@keyframes zoom{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.08);
+    }
+}
+
+@keyframes caer{
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:600px){
+    .pregunta h1{
+        font-size:40px;
+    }
+
+    .botones{
+        width:280px;
+    }
+
+    .final h1{
+        font-size:50px;
+    }
+
+    .corazon{
+        font-size:90px;
+    }
 }

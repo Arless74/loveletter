@@ -6,17 +6,24 @@ const abrirPregunta = document.getElementById("abrirPregunta");
 
 const botonSi = document.getElementById("si");
 const botonNo = document.getElementById("no");
+
 const mensaje = document.getElementById("mensaje");
 
-let frases = [
+/* =========================
+   FRASES
+========================= */
+const frases = [
     "yo sé que sí 😌",
     "piénsalo otra vez ❤️",
     "no puedes huir 😏",
     "te amo más 💖",
-    "ya lo sabías 😳"
+    "ya lo sabías 😳",
+    "el botón no está tímido 😶",
+    "inténtalo otra vez 😂"
 ];
 
 let contador = 0;
+let tamaño = 1;
 
 /* =========================
    ABRIR SOBRE
@@ -27,11 +34,12 @@ sobre.addEventListener("click", () => {
     setTimeout(() => {
         sobre.style.display = "none";
         carta.classList.remove("oculto");
-    }, 800);
+
+    }, 900);
 });
 
 /* =========================
-   ABRIR PREGUNTA
+   ABRIR CARTA
 ========================= */
 abrirPregunta.addEventListener("click", () => {
     carta.classList.add("oculto");
@@ -39,36 +47,44 @@ abrirPregunta.addEventListener("click", () => {
 });
 
 /* =========================
-   BOTÓN NO (NO SE PEGA)
+   BOTÓN NO
 ========================= */
 botonNo.addEventListener("mouseover", moverNo);
 botonNo.addEventListener("click", moverNo);
 
 function moverNo(){
 
-    const cont = document.querySelector(".botones");
-    const rect = cont.getBoundingClientRect();
+    const contenedor = document.querySelector(".botones");
+    const rect = contenedor.getBoundingClientRect();
 
-    const x = Math.random() * (rect.width - 80);
-    const y = Math.random() * (rect.height - 50);
+    const x = Math.random() * (rect.width - botonNo.offsetWidth);
+    const y = Math.random() * (rect.height - botonNo.offsetHeight);
 
     botonNo.style.left = x + "px";
     botonNo.style.top = y + "px";
 
     mensaje.innerText = frases[contador % frases.length];
     contador++;
+
+    /* CRECER BOTÓN SI */
+    tamaño += 0.1;
+    botonSi.style.transform = `scale(${tamaño})`;
 }
 
 /* =========================
-   BOTÓN SI (FINAL)
+   BOTÓN SI
 ========================= */
 botonSi.addEventListener("click", () => {
 
     document.body.innerHTML = `
+    
         <div class="final">
-            <h1>TE AMO 💖</h1>
-            <div class="corazon">❤️</div>
+            <h1>Te Amo mi bbshita 💖</h1>
+            <div class="corazon">
+                ❤️
+            </div>
         </div>
+    
     `;
 
     iniciarLluvia();
@@ -79,20 +95,33 @@ botonSi.addEventListener("click", () => {
 ========================= */
 function iniciarLluvia(){
 
-    const textos = ["Te amo ❤️","Eres todo 💖","Siempre tú"];
+    const textos = [
+        "Te amo ❤️",
+        "Eres todo 💖",
+        "Siempre tú ✨",
+        "Mi lugar favorito eres tú 💕",
+        "Contigo todo ❤️"
+    ];
 
     setInterval(() => {
 
         const div = document.createElement("div");
         div.classList.add("lluvia");
 
-        div.innerText = textos[Math.floor(Math.random()*textos.length)];
+        div.innerText =
+            textos[Math.floor(Math.random() * textos.length)];
 
-        div.style.left = Math.random()*window.innerWidth + "px";
+        div.style.left =
+            Math.random() * window.innerWidth + "px";
+
+        div.style.fontSize =
+            (20 + Math.random() * 20) + "px";
 
         document.body.appendChild(div);
 
-        setTimeout(()=>div.remove(),5000);
+        setTimeout(() => {
+            div.remove();
+        }, 5000);
 
-    },200);
+    }, 250);
 }
