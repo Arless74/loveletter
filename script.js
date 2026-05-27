@@ -52,7 +52,7 @@ sobre.addEventListener("click", () => {
     /* sacar carta */
     gsap.to(".carta-interna", {
 
-        y:-260,
+        y:-180,
 
         duration:1.2,
 
